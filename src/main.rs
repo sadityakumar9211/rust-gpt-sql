@@ -38,6 +38,7 @@ struct OAIRequest {
 #[tokio::main] // using async functions
                // Box type to handle errors
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    println!("{}", env::var("OAI_TOKEN").unwrap());
     dotenv().ok(); // load env variables from .env file
     let https = HttpsConnector::new(); // https connector from hyper_tls crate
     let client = Client::builder().build(https); // client from hyper crate
